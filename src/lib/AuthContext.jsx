@@ -4,8 +4,11 @@ const AUTH_STORAGE_KEY = 'farias_estofados_user'
 const MOCK_CREDENTIALS = {
   login: 'admin',
   password: '123456',
-  name: 'Administrador',
+  fullName: 'Victor Faria da Silva',
   email: 'admin@fariasestofados.com.br',
+  age: 29,
+  cpf: '123.456.789-00',
+  birthDate: '14/08/1996',
 }
 
 const AuthContext = createContext(null)
@@ -44,9 +47,12 @@ export const AuthProvider = ({ children }) => {
         }
 
         const nextUser = {
-          name: MOCK_CREDENTIALS.name,
-          email: MOCK_CREDENTIALS.email,
           login: MOCK_CREDENTIALS.login,
+          fullName: MOCK_CREDENTIALS.fullName,
+          email: MOCK_CREDENTIALS.email,
+          age: MOCK_CREDENTIALS.age,
+          cpf: MOCK_CREDENTIALS.cpf,
+          birthDate: MOCK_CREDENTIALS.birthDate,
         }
 
         window.localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(nextUser))
