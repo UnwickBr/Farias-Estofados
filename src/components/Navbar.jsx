@@ -53,10 +53,9 @@ export default function Navbar({ cartCount = 0 }) {
         <div className="flex items-center gap-4">
           <Link
             to="/login"
-            className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-white/85 hover:text-white transition-colors"
+            className="hidden md:inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/30 text-white/90 hover:text-white hover:border-white/60 hover:bg-white/10 transition-colors"
           >
             <User className="h-4 w-4" />
-            <span>Usuario</span>
           </Link>
 
           <Link to="/carrinho" className="relative group">
@@ -83,9 +82,11 @@ export default function Navbar({ cartCount = 0 }) {
             className="md:hidden bg-black/90 backdrop-blur-md border-b border-white/10"
           >
             <div className="px-6 py-6 space-y-4">
-              <Link to="/login" className="flex items-center gap-2 text-base font-medium text-white">
+              <Link
+                to="/login"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/30 text-white"
+              >
                 <User className="h-4 w-4" />
-                <span>Usuario</span>
               </Link>
 
               {links.map((link) => (
