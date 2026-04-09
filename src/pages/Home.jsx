@@ -6,32 +6,21 @@ import { Button } from '@/components/ui/button'
 import { applyFallbackImage } from '@/lib/image-fallbacks'
 import { mockProducts } from '@/lib/mock-products'
 import { placeholderImages } from '@/lib/placeholder-images'
+import heroImage from '@/assets/hero.jpg'
+import aboutImage from '@/assets/about.jpg'
+import sofaImage from '@/assets/sofa.jpg'
+import chairImage from '@/assets/chair.jpg'
+import poufImage from '@/assets/pouf.jpg'
+import pillowsImage from '@/assets/pillows.jpg'
 import HeroSection from '../components/HeroSection'
 import CategoryCard from '../components/CategoryCard'
 import ProductCard from '../components/ProductCard'
 
-const HERO_IMAGE =
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Brochstein_House_WTCannady_1972.jpg/2560px-Brochstein_House_WTCannady_1972.jpg'
-const ABOUT_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/7/7f/In_the_sewing_workshop.jpg'
-
 const categories = [
-  {
-    name: 'Sofas',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Living_room_Germany_2006.jpg/800px-Living_room_Germany_2006.jpg',
-  },
-  {
-    name: 'Cadeiras',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Armchair.jpg/1280px-Armchair.jpg',
-  },
-  {
-    name: 'Puffes',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/HK_Ka_Wah_Centre_showflat_%E6%B7%B1%E7%81%A39_Marinella_T6-A_living_room_Sofa_Oct-2011.jpg/800px-HK_Ka_Wah_Centre_showflat_%E6%B7%B1%E7%81%A39_Marinella_T6-A_living_room_Sofa_Oct-2011.jpg',
-  },
-  {
-    name: 'Almofadas',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pillows_%28307397568%29.jpg/800px-Pillows_%28307397568%29.jpg',
-  },
+  { name: 'Sofas', image: sofaImage },
+  { name: 'Cadeiras', image: chairImage },
+  { name: 'Puffes', image: poufImage },
+  { name: 'Almofadas', image: pillowsImage },
 ]
 
 export default function Home() {
@@ -43,7 +32,7 @@ export default function Home() {
 
   return (
     <div>
-      <HeroSection image={HERO_IMAGE} />
+      <HeroSection image={heroImage} />
 
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
         <div className="flex items-end justify-between mb-12">
@@ -99,7 +88,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <img
-                src={ABOUT_IMAGE}
+                src={aboutImage}
                 alt="Detalhes de mobiliario artesanal"
                 onError={(event) => applyFallbackImage(event, placeholderImages.about)}
                 className="rounded-lg w-full aspect-[4/3] object-cover"

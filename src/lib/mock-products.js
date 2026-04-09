@@ -1,3 +1,8 @@
+import sofaImage from '@/assets/sofa.jpg'
+import chairImage from '@/assets/chair.jpg'
+import poufImage from '@/assets/pouf.jpg'
+import pillowsImage from '@/assets/pillows.jpg'
+
 export const mockProducts = [
   {
     id: 'sofa-linho-01',
@@ -5,7 +10,7 @@ export const mockProducts = [
     description: 'Sofa de linhas suaves com acabamento em linho e espuma de alta densidade.',
     price: 3890,
     category: 'Sofas',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Living_room_Germany_2006.jpg/1280px-Living_room_Germany_2006.jpg',
+    image: sofaImage,
     featured: true,
     in_stock: true,
     material: 'Linho e madeira macica',
@@ -17,7 +22,7 @@ export const mockProducts = [
     description: 'Cadeira estofada com estrutura em madeira e visual contemporaneo.',
     price: 890,
     category: 'Cadeiras',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Armchair.jpg',
+    image: chairImage,
     featured: true,
     in_stock: true,
     material: 'Madeira e tecido premium',
@@ -29,7 +34,7 @@ export const mockProducts = [
     description: 'Puff compacto para compor salas, quartos e closets com textura sofisticada.',
     price: 590,
     category: 'Puffes',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/HK_Ka_Wah_Centre_showflat_%E6%B7%B1%E7%81%A39_Marinella_T6-A_living_room_Sofa_Oct-2011.jpg/1280px-HK_Ka_Wah_Centre_showflat_%E6%B7%B1%E7%81%A39_Marinella_T6-A_living_room_Sofa_Oct-2011.jpg',
+    image: poufImage,
     featured: false,
     in_stock: true,
     material: 'Boucle e base reforcada',
@@ -41,7 +46,7 @@ export const mockProducts = [
     description: 'Almofada decorativa para compor ambientes aconchegantes.',
     price: 149,
     category: 'Almofadas',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Pillows_%28307397568%29.jpg',
+    image: pillowsImage,
     featured: true,
     in_stock: true,
     material: 'Algodao e fibra siliconada',
