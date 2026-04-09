@@ -9,7 +9,7 @@ import CategoryCard from '../components/CategoryCard'
 import ProductCard from '../components/ProductCard'
 
 const HERO_IMAGE =
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Brochstein_House_WTCannady_1972.jpg/1280px-Brochstein_House_WTCannady_1972.jpg'
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Brochstein_House_WTCannady_1972.jpg/2560px-Brochstein_House_WTCannady_1972.jpg'
 const ABOUT_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/7/7f/In_the_sewing_workshop.jpg'
 
 const categories = [
