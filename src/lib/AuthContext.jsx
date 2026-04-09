@@ -9,23 +9,13 @@ const MOCK_CREDENTIALS = {
   age: '29',
   cpf: '123.456.789-00',
   birthDate: '14/08/1996',
-  addresses: {
-    casa: {
-      rua: 'Rua das Palmeiras',
-      numero: '245',
-      bairro: 'Centro',
-      cidade: 'Sao Paulo',
-      estado: 'SP',
-      cep: '01010-100',
-    },
-    entrega: {
-      rua: 'Av. Paulista',
-      numero: '1500',
-      bairro: 'Bela Vista',
-      cidade: 'Sao Paulo',
-      estado: 'SP',
-      cep: '01310-200',
-    },
+  address: {
+    rua: 'Rua das Palmeiras',
+    numero: '245',
+    bairro: 'Centro',
+    cidade: 'Sao Paulo',
+    estado: 'SP',
+    cep: '01010-100',
   },
 }
 
@@ -76,7 +66,7 @@ export const AuthProvider = ({ children }) => {
           age: MOCK_CREDENTIALS.age,
           cpf: MOCK_CREDENTIALS.cpf,
           birthDate: MOCK_CREDENTIALS.birthDate,
-          addresses: MOCK_CREDENTIALS.addresses,
+          address: MOCK_CREDENTIALS.address,
         }
 
         persistUser(nextUser)
@@ -90,13 +80,13 @@ export const AuthProvider = ({ children }) => {
         if (!user) return
         persistUser({ ...user, ...updates })
       },
-      updateAddresses(addresses) {
+      updateAddress(address) {
         if (!user) return
         persistUser({
           ...user,
-          addresses: {
-            ...user.addresses,
-            ...addresses,
+          address: {
+            ...user.address,
+            ...address,
           },
         })
       },

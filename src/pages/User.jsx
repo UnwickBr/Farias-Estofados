@@ -33,7 +33,7 @@ const createEmptyAddress = () => ({
 })
 
 export default function User() {
-  const { isAuthenticated, user, logout, updateUser, updateAddresses } = useAuth()
+  const { isAuthenticated, user, logout, updateUser, updateAddress } = useAuth()
   const [activeSection, setActiveSection] = useState('perfil')
   const [profileForm, setProfileForm] = useState({
     fullName: '',
@@ -43,10 +43,7 @@ export default function User() {
     birthDate: '',
     login: '',
   })
-  const [addressForm, setAddressForm] = useState({
-    casa: createEmptyAddress(),
-    entrega: createEmptyAddress(),
-  })
+  const [addressForm, setAddressForm] = useState(createEmptyAddress())
   const [orders, setOrders] = useState([])
   const [profileSaved, setProfileSaved] = useState(false)
   const [addressSaved, setAddressSaved] = useState(false)
@@ -63,11 +60,7 @@ export default function User() {
       login: user.login || '',
     })
 
-    setAddressForm({
-      casa: user.addresses?.casa || createEmptyAddress(),
-      entrega: user.addresses?.entrega || createEmptyAddress(),
-    })
-
+    setAddressForm(user.address || createEmptyAddress())
     setOrders(getOrdersByUser(user.login))
   }, [user])
 
@@ -92,7 +85,7 @@ export default function User() {
 
   const handleAddressSubmit = (event) => {
     event.preventDefault()
-    updateAddresses(addressForm)
+    updateAddress(addressForm)
     setAddressSaved(true)
     setTimeout(() => setAddressSaved(false), 2000)
   }
@@ -105,7 +98,7 @@ export default function User() {
             <p className="text-xs tracking-[0.3em] uppercase text-white/60 mb-3">Area do usuario</p>
             <h1 className="font-display text-4xl mb-3">Minha conta</h1>
             <p className="text-white/80 max-w-2xl">
-              Gerencie seus dados de perfil, acompanhe pedidos e consulte seus enderecos.
+              Gerencie seus dados de perfil, acompanhe pedidos e consulte seu endereco.
             </p>
           </div>
 
@@ -226,42 +219,48 @@ export default function User() {
               {activeSection === 'enderecos' && (
                 <form onSubmit={handleAddressSubmit}>
                   <div className="flex items-center justify-between gap-4 mb-6">
-                    <h2 className="text-2xl font-semibold text-slate-900">Enderecos</h2>
+                    <h2 className="text-2xl font-semibold text-slate-900">Endereco</h2>
                     <Button type="submit" className="rounded-full bg-blue-600 hover:bg-blue-500 text-white gap-2">
                       <Save className="h-4 w-4" />
-                      Salvar enderecos
+                      Salvar endereco
                     </Button>
                   </div>
 
-                  {addressSaved && <p className="text-sm text-green-600 mb-4">Enderecos atualizados com sucesso.</p>}
+                  {addressSaved && <p className="text-sm text-green-600 mb-4">Endereco atualizado com sucesso.</p>}
 
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <AddressFormCard
-                      title="Casa"
-                      value={addressForm.casa}
-                      onChange={(field, value) =>
-                        setAddressForm((current) => ({
-                          ...current,
-                          casa: {
-                            ...current.casa,
-                            [field]: value,
-                          },
-                        }))
-                      }
-                    />
-                    <AddressFormCard
-                      title="Entrega"
-                      value={addressForm.entrega}
-                      onChange={(field, value) =>
-                        setAddressForm((current) => ({
-                          ...current,
-                          entrega: {
-                            ...current.entrega,
-                            [field]: value,
-                          },
-                        }))
-                      }
-                    />
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <AddressInput
+                        label="Rua"
+                        value={addressForm.rua}
+                        onChange={(value) => setAddressForm((current) => ({ ...current, rua: value }))}
+                      />
+                      <AddressInput
+                        label="Numero"
+                        value={addressForm.numero}
+                        onChange={(value) => setAddressForm((current) => ({ ...current, numero: value }))}
+                      />
+                      <AddressInput
+                        label="Bairro"
+                        value={addressForm.bairro}
+                        onChange={(value) => setAddressForm((current) => ({ ...current, bairro: value }))}
+                      />
+                      <AddressInput
+                        label="Cidade"
+                        value={addressForm.cidade}
+                        onChange={(value) => setAddressForm((current) => ({ ...current, cidade: value }))}
+                      />
+                      <AddressInput
+                        label="Estado"
+                        value={addressForm.estado}
+                        onChange={(value) => setAddressForm((current) => ({ ...current, estado: value }))}
+                      />
+                      <AddressInput
+                        label="CEP"
+                        value={addressForm.cep}
+                        onChange={(value) => setAddressForm((current) => ({ ...current, cep: value }))}
+                      />
+                    </div>
                   </div>
                 </form>
               )}
@@ -279,22 +278,6 @@ function EditableField({ icon: Icon, label, value, onChange }) {
       <Icon className="h-5 w-5 text-blue-600 mb-4" />
       <Label className="text-sm text-slate-600 mb-2 block">{label}</Label>
       <Input value={value} onChange={(event) => onChange(event.target.value)} className="bg-white border-slate-300" />
-    </div>
-  )
-}
-
-function AddressFormCard({ title, value, onChange }) {
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-      <Label className="text-lg font-semibold text-slate-900 mb-4 block">{title}</Label>
-      <div className="grid gap-4">
-        <AddressInput label="Rua" value={value.rua} onChange={(next) => onChange('rua', next)} />
-        <AddressInput label="Numero" value={value.numero} onChange={(next) => onChange('numero', next)} />
-        <AddressInput label="Bairro" value={value.bairro} onChange={(next) => onChange('bairro', next)} />
-        <AddressInput label="Cidade" value={value.cidade} onChange={(next) => onChange('cidade', next)} />
-        <AddressInput label="Estado" value={value.estado} onChange={(next) => onChange('estado', next)} />
-        <AddressInput label="CEP" value={value.cep} onChange={(next) => onChange('cep', next)} />
-      </div>
     </div>
   )
 }
